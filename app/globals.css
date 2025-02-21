@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
+@layer base {
+  body {
+    @apply font-primary bg-primary text-white leading-loose;
+  }
+  .h1{
+    @apply text-[45px] xl:text-[60px] leading-[1.1] font-bold;
+  }
+  .h2{
+    @apply text-[36px] xl:text-[48px] leading-[1.1] font-bold;
+  }
+  .h3{
+    @apply text-[20px] xl:text-[24px] leading-[1.1] font-bold;
+  }
+  .text-outline{
+    -webkit-text-stroke: 1px #ffffffff;
+  }
+  .text-outline-hover{
+    -webkit-text-stroke: 1px #DE4C1E;
+  }
+  @font-face {
+    font-family: "Bahnschrift";
+    src: url("/fonts/bahnschrift.woff2") format("woff2"),
+         url("/fonts/bahnschrift.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: "Bahnschrift", sans-serif;
+  }
+}
+
+
