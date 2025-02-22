@@ -97,7 +97,7 @@ const Contact = () => {
   }
     
     try {
-      const response = await fetch("http://192.168.220.107:5000/api/messages", {
+      const response = await fetch("http://localhost/api/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({name, lastname, email, phone, service, message}),
@@ -152,7 +152,7 @@ const Contact = () => {
   
     // Récupérer les messages
     const fetchMessages = async () => {
-       const response = await fetch("http://192.168.220.107:5000/api/send-email");
+       const response = await fetch("http://localhost/api/send-email");
        const data = await response.json();
        setMessages(data);
     };
