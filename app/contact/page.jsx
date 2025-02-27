@@ -97,24 +97,18 @@ const Contact = () => {
   }
     
     try {
-      const response = await fetch("http://localhost/api/messages", {
+      const response = await fetch("http://192.168.61.107:5000/api/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({name, lastname, email, phone, service, message}),
       });
+
+      console.log("Statut de la réponse :", response.status);
+
       // Simulation d'un appel API (remplacez avec votre logique d'envoi réel)
       await new Promise((resolve) => setTimeout(resolve, 2000));
   
       console.log("Réponse complète :", response);
-  
-      // Vérifie si la réponse est bien JSON avant de la parser
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        const textResponse = await response.text(); // Lire la réponse en texte
-        console.error("Réponse non JSON :", textResponse);
-        alert("Erreur : le serveur a retourné une page HTML au lieu d'un JSON.");
-        return;
-      }
   
       const responseData = await response.json();
 
@@ -152,7 +146,7 @@ const Contact = () => {
   
     // Récupérer les messages
     const fetchMessages = async () => {
-       const response = await fetch("http://localhost/api/send-email");
+       const response = await fetch("http://192.168.61.107:5000/api/send-email");
        const data = await response.json();
        setMessages(data);
     };
@@ -176,7 +170,9 @@ const Contact = () => {
        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="flex items-center justify-center">
             <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-accent"></div>
-              <span className="ml-2 text-white">Envoi en cours...</span>
+              <span className="ml-2 text-white">
+                En cours d'envoi...
+              </span>
             </div>
           </div>
         )}
@@ -191,16 +187,12 @@ const Contact = () => {
               items-center justify-center z-50"
             >
               <div className="bg-white p-8 rounded-xl shadow-lg text-center
-              text-primary max-w-sm xl:max-w-xl md:max-w-md"
+              text-primary sm:max-w-sm xl:max-w-md md:max-w-sm"
               >
-                <h2 className="text-4xl text-green-800 text-bolder py-4">Envoyé !</h2>
-                <h4 className="text-bolder text-green-800 text-2xl py-3">
-                  Merci d'avoir contacté Oskil
-                </h4>
+                <h2 className="text-4xl text-green-800 text-bolder py-4">Message Envoyé !</h2>
                 <p className="mb-5 text-green-800 text-base">
-                  Votre message a été envoyé avec succès !
-                  Une réponse vous sera envoyée à votre adresse mail fournie 
-                  lors du contact.
+                  Vous recevrez une réponse via l'adresse mail fournie 
+                  lors de l'envoi de votre message. Merci d'avoir contacté Oskil !
                 </p>
                 <button
                   className="px-4 py-2 bg-green-800 text-white rounded
@@ -253,7 +245,7 @@ const Contact = () => {
                   <Input
                     value={phone} 
                     onChange={(e) => setPhone(e.target.value)}
-                    type='number' name="phone"
+                    type='tel' name="phone"
                     placeholder='Téléphone *'
                     className="text-white/90"
                     required
@@ -271,10 +263,10 @@ const Contact = () => {
                   <SelectContent>
                     <SelectGroup>
                       <SelectLabel>Séléctionez un service</SelectLabel>
-                      <SelectItem value="est">UI/UX Design</SelectItem>
-                      <SelectItem value="cst">Développement Web</SelectItem>
-                      <SelectItem value="mst">Infographie</SelectItem>
-                      <SelectItem value="rst">Autres</SelectItem>
+                      <SelectItem value="ui/ux">UI/UX Design</SelectItem>
+                      <SelectItem value="dev">Développement Web</SelectItem>
+                      <SelectItem value="info">Infographie</SelectItem>
+                      <SelectItem value="autres">Autres</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>

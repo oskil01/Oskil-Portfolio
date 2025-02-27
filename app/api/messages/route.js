@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import sqlite3 from "sqlite3";
-import open from "sqlite";
+import open from "sqlite3";
 
 // Fonction pour ouvrir la base de données SQLite
 async function openDb() {
@@ -20,7 +20,7 @@ export async function POST(req) {
 
     // Insérer les données dans la table "contact"
     await db.run(
-      "INSERT INTO contact (nom, email, phone, message) VALUES (?, ?, ?, ?, ?, ?)",
+      "INSERT INTO messages (name, lastname, email, phone, service, message) VALUES (?, ?, ?, ?, ?, ?)",
       [name, lastname, email, phone, service, message]
     );
 

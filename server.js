@@ -4,12 +4,13 @@ import sqlite3 from 'sqlite3';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config(); // Chargement les variables d'environnement
+
 const app = express();
 const PORT = 5000;
 
 // 📌 Middlewares
-app.use(cors()); // Autoriser les requêtes cross-origin
+app.use(cors());
 app.use(express.json()); // Parser les JSON des requêtes
 
 // 📌 Configuration de Nodemailer pour l'envoi des e-mails
@@ -18,11 +19,20 @@ const transporter = nodemailer.createTransport({
   port: parseInt(process.env.EMAIL_PORT) || 587, // 587 pour Outlook
   secure: false, // false pour STARTTLS
   auth: {
-    user: process.env.EMAIL_USER, // Ton email Outlook
-    pass: process.env.EMAIL_PASS, // Ton mot de passe (ou mot de passe d'application)
+    user: process.env.EMAIL_USER, // email Outlook
+    pass: process.env.EMAIL_PASS, // mot de passe (ou mot de passe d'application)
   },
   tls: {
-    rejectUnauthorized: false, // Ajouté pour éviter des erreurs SSL
+    rejectUnauthorized: false, // dtop erreurs SSL
+  }
+});
+
+// vérification de la connexion à nodemailer
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ Problème de connexion SMTP :", error);
+  } else {
+    console.log("✅ SMTP connecté avec succès !");
   }
 });
 
@@ -34,6 +44,7 @@ app.post("/send-email", async (req, res) => {
     return res.status(400).json({ error: "Tous les champs sont requis." });
   }
 
+  // Envoie du mail
   const mailOptions = {
     from: process.env.EMAIL_USER, // Expéditeur
     to: recipientEmail, // Destinataire
@@ -74,15 +85,6 @@ db.serialize(() => {
   )`);
 });
 
-// route pour tester si service existe deja dans la table
-db.run(`ALTER TABLE messages ADD COLUMN service TEXT;`, (err) => {
-  if (err) {
-    console.log("❌ Erreur lors de l'ajout de la colonne 'service' :", err);
-  } else {
-    console.log("✅ Colonne 'service' ajoutée avec succès.");
-  }
-});
-
 // 📌 Route pour tester le serveur
 app.get('/', (req, res) => {
   res.send('Le serveur fonctionne avec SQLite !');
@@ -93,7 +95,9 @@ app.post('/api/messages', (req, res) => {
   const { name, lastname, email, phone, service, message } = req.body;
 
   if (!name || !email || !phone || !message) {
-    return res.status(400).json({ message: "Tous les champs obligatoires doivent être remplis !" });
+    return res.status(400).json({ 
+      message: "Tous les champs obligatoires doivent être remplis !" 
+    });
   }
 
   const sql = `INSERT INTO messages (name, lastname, email, phone, service, message) VALUES (?, ?, ?, ?, ?, ?)`;

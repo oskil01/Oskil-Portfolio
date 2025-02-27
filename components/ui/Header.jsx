@@ -44,21 +44,35 @@ const Header = () => {
       </div>
 
       {/* Bouton WhatsApp flottant */}
-      <div className="fixed bottom-12 w-full flex justify-end px-6 xl:px-32 z-50">
-        <motion.a
-          href="https://wa.me/243820838387"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-500 text-white px-4 py-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center xl:mr-8"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, type: 'spring' }}
-          whileHover={{ scale: 1.1 }}
-        >
-        <MessageCircle size={24} />
-        <span></span>
-        </motion.a>
-      </div>
+      <div className="fixed bottom-12 w-full flex justify-end px-6 
+      xl:px-32 z-50 mb-3 me-10">
+      <motion.a
+        href="https://wa.me/243820838387"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center xl:mr-8" 
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.5, type: "spring" }}
+        whileHover={{ scale: 1.1 }}
+      >
+        {/* Icône WhatsApp SVG */}
+        <motion.img
+          src="/assests/whatsapp.svg" 
+          alt="WhatsApp"
+          width={50} 
+          height={50}
+          animate={{
+            y: [0, -5, 0], 
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity, 
+            ease: "easeInOut",
+          }}
+        />
+      </motion.a>
+    </div>
 
     </header>
   );

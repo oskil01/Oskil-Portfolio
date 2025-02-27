@@ -80,14 +80,14 @@ const HireMe = () => {
 const displayedTestimony = showAll ? testimony : testimony.slice(0, 2);
 
   // téléchargement cv
-  // const handleDownload = () => {
-  //   const link = document.createElement("a");
-  //   link.href = "/assests/cv.pdf";
-  //   link.download = "Mon_CV.pdf"; // Nom du fichier
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  // };
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/assests/Oskil_CV.pdf";
+    link.download = "Mon_CV.pdf"; // Nom du fichier
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   {/** ====================================================== */}
   return (
@@ -158,7 +158,7 @@ const displayedTestimony = showAll ? testimony : testimony.slice(0, 2);
              justify-center gap-6 xl:gap-8"
           >
             <Button 
-              // onClick={handleDownload}  
+              onClick={handleDownload}  
               variant="ghost"
               size="lg"
               className="uppercase flex items-center gap-2 border 

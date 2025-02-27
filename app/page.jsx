@@ -31,15 +31,15 @@ const Accueil = () => { // animation du span
 
   const text = texts[currentTextIndex]; // Texte actuel à animer
   
-  // dOWNLOAD CV
-  // const handleDownload = () => {
-  //   const link = document.createElement("a");
-  //   link.href = "/";
-  //   link.download = "Mon_CV.pdf"; // Nom du fichier
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  // };
+  // Import CV
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/";
+    link.download = "Oskil_CV.pdf"; 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   
   return (
     <section className="h-full bg-primary text-white">
@@ -70,7 +70,7 @@ const Accueil = () => { // animation du span
             <div className="flex flex-col xl:flex-row items-center xl:items-start 
                 justify-center xl:justify-start gap-6 xl:gap-8">
                <Button
-                  // onClick={handleDownload}  
+                  onClick={handleDownload}  
                   variant="ghost"
                   size="lg"
                   className="uppercase flex items-center gap-2 border border-accent 

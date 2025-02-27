@@ -12,13 +12,13 @@ const SelectGroup = SelectPrimitive.Group
 
 const SelectValue = SelectPrimitive.Value
 
-// champ sélectionnez un service 
+// champ sélecteur de service 
 const SelectTrigger = React.forwardRef(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
       `flex h-[45px] w-full items-center justify-between rounded-md border 
-      border-white/20 bg-primary text-sm text-white/50 py-3 px-5 
+      border-white/20 bg-primary text-sm text-white/70 py-3 px-5 
       focus:border-accent outline-none `,
       className
     )}
@@ -52,7 +52,7 @@ const SelectScrollDownButton = React.forwardRef(({ className, ...props }, ref) =
 SelectScrollDownButton.displayName =
   SelectPrimitive.ScrollDownButton.displayName
 
-// champ visionneur de services
+// champ contenneur de services
 const SelectContent = React.forwardRef(({ className, children, position = "popper", ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
@@ -67,7 +67,8 @@ const SelectContent = React.forwardRef(({ className, children, position = "poppe
         data-[side=left]:slide-in-from-right-2 
         data-[side=right]:slide-in-from-left-2 
         data-[side=top]:slide-in-from-bottom-2 
-        dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50`,
+        dark:border-slate-800 dark:bg-slate-950 
+        dark:text-slate-50`,
         position === "popper" &&
           `data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 
           data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1`,
