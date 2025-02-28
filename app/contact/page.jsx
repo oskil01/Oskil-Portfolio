@@ -97,7 +97,8 @@ const Contact = () => {
   }
     
     try {
-      const response = await fetch("http://192.168.61.107:5000/api/messages", {
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/messages`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/messages`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({name, lastname, email, phone, service, message}),
@@ -146,7 +147,8 @@ const Contact = () => {
   
     // Récupérer les messages
     const fetchMessages = async () => {
-       const response = await fetch("http://192.168.61.107:5000/api/send-email");
+      //  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/messages`);
+       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/messages`);
        const data = await response.json();
        setMessages(data);
     };
