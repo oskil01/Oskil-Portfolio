@@ -37,15 +37,15 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Navbar pour mobile */}
+        {/* Navbar mobile */}
         <div className="xl:hidden">
           <MobileNav />
         </div>
       </div>
 
-      {/* Bouton WhatsApp flottant */}
+      {/* Bouton WhatsApp */}
       <div className="fixed bottom-12 w-full flex justify-end px-6 
-      xl:px-32 z-50 mb-3 me-10">
+      xl:px-[150px] z-40 mb-3 ">
       <motion.a
         href="https://wa.me/243820838387"
         target="_blank"

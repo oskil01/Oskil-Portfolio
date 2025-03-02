@@ -10,28 +10,28 @@ const services = [
     num: '01',
     title: 'UI/UX Design',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Je crée des interfaces modernes et intuitives pour une expérience utilisateur fluide et engageante.',
     slug: 'ui-ux-design',
   },
   {
     num: '02',
     title: 'Développement Web',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Je conçois des sites performants, responsifs et optimisés pour une expérience utilisateur impeccable.',
     slug: 'developpement-web',
   },
   {
     num: '03',
     title: 'Infographie',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Je transforme vos idées en visuels percutants avec des designs créatifs et professionnels.',
     slug: 'infographisme',
   },
   {
     num: '04',
     title: 'Création Digitale',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Je donne vie à votre identité numérique avec des contenus visuels et interactifs uniques.',
     slug: 'creation-digitale',
   },
 ];

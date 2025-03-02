@@ -18,6 +18,9 @@ import {
   SelectValue,
 } from "@/components/ui/ui/select";
 
+// importation de l'icone de confirmation à l'envoi du message
+import { CheckCircle } from "lucide-react";
+
 // importation des icones de contact
 import { 
   FaPhoneAlt, 
@@ -188,13 +191,21 @@ const Contact = () => {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex 
               items-center justify-center z-50"
             >
-              <div className="bg-white p-8 rounded-xl shadow-lg text-center
-              text-primary sm:max-w-sm xl:max-w-md md:max-w-sm"
+              <div className="bg-white p-8 m-5 rounded-xl shadow-lg text-center
+              text-primary lg:max-w-[375px] xl:max-w-md md:max-w-[320px]"
               >
-                <h2 className="text-4xl text-green-800 text-bolder py-4">Message Envoyé !</h2>
+                {/* icone de confirmation */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+                  className="flex justify-center"
+                >
+                  <CheckCircle size={50} className="text-green-800" />
+                </motion.div>
+                <h2 className="text-2xl text-green-800 text-bolder py-4">Message Envoyé !</h2>
                 <p className="mb-5 text-green-800 text-base">
-                  Vous recevrez une réponse via l'adresse mail fournie 
-                  lors de l'envoi de votre message. Merci d'avoir contacté Oskil !
+                  Vous recevrez une réponse à votre message par mail. Merci d'avoir contacté Oskil !
                 </p>
                 <button
                   className="px-4 py-2 bg-green-800 text-white rounded

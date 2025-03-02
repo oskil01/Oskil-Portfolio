@@ -99,7 +99,7 @@ const Accueil = () => { // animation du span
       </div>
 
       {/* Statistiques */}
-
+    
       <Stats />
 
     </section>
