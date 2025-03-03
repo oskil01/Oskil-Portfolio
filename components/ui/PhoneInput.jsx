@@ -6,6 +6,7 @@ import Flag from "react-world-flags"; // Importation de la bibliothèque de drap
 
 // pays éligibles à mes services  
 const countryCodes = [
+    { code: "CD", dialCode: "+243", name: "République Démocratique du Congo" },
     { code: "ZA", dialCode: "+27", name: "Afrique du Sud" },
     { code: "BE", dialCode: "+32", name: "Belgique" },
     { code: "BJ", dialCode: "+229", name: "Bénin" },
@@ -22,12 +23,11 @@ const countryCodes = [
     { code: "ML", dialCode: "+223", name: "Mali" },
     { code: "NG", dialCode: "+234", name: "Nigeria" },
     { code: "UG", dialCode: "+256", name: "Ouganda" },
-    { code: "CD", dialCode: "+243", name: "République Démocratique du Congo" },
     { code: "SN", dialCode: "+221", name: "Sénégal" },
     { code: "CH", dialCode: "+41", name: "Suisse" },
     { code: "TZ", dialCode: "+255", name: "Tanzanie" },
     { code: "TG", dialCode: "+228", name: "Togo" },
-    { code: "US", dialCode: "+1", name: "USA" },
+    { code: "US", dialCode: "+1", name: "Etats-Unis" },
   ];  
 
 const PhoneInput = () => {
