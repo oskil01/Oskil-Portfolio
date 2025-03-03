@@ -6,31 +6,28 @@ import Flag from "react-world-flags"; // Importation de la bibliothèque de drap
 
 // pays éligibles à mes services  
 const countryCodes = [
-    // 🌍 Afrique Francophone
-    { code: "CD", dialCode: "+243", name: "RDC" },
-    { code: "CG", dialCode: "+242", name: "Congo-Brazzaville" },
-    { code: "CM", dialCode: "+237", name: "Cameroun" },
-    { code: "CI", dialCode: "+225", name: "Côte d'Ivoire" },
-    { code: "SN", dialCode: "+221", name: "Sénégal" },
-    { code: "TG", dialCode: "+228", name: "Togo" },
+    { code: "ZA", dialCode: "+27", name: "Afrique du Sud" },
+    { code: "BE", dialCode: "+32", name: "Belgique" },
     { code: "BJ", dialCode: "+229", name: "Bénin" },
+    { code: "BI", dialCode: "+257", name: "Burundi" },
+    { code: "CA", dialCode: "+1", name: "Canada" },
+    { code: "CM", dialCode: "+237", name: "Cameroun" },
+    { code: "CG", dialCode: "+242", name: "Congo-Brazzaville" },
+    { code: "CI", dialCode: "+225", name: "Côte d'Ivoire" },
+    { code: "FR", dialCode: "+33", name: "France" },
     { code: "GA", dialCode: "+241", name: "Gabon" },
+    { code: "GH", dialCode: "+233", name: "Ghana" },
+    { code: "KE", dialCode: "+254", name: "Kenya" },
     { code: "MG", dialCode: "+261", name: "Madagascar" },
     { code: "ML", dialCode: "+223", name: "Mali" },
-  
-    // 🌍 Afrique Anglophone
     { code: "NG", dialCode: "+234", name: "Nigeria" },
-    { code: "KE", dialCode: "+254", name: "Kenya" },
-    { code: "GH", dialCode: "+233", name: "Ghana" },
-    { code: "ZA", dialCode: "+27", name: "Afrique du Sud" },
     { code: "UG", dialCode: "+256", name: "Ouganda" },
-  
-    // 🌎 Occident
-    { code: "FR", dialCode: "+33", name: "France" },
-    { code: "BE", dialCode: "+32", name: "Belgique" },
-    { code: "CA", dialCode: "+1", name: "Canada" },
+    { code: "CD", dialCode: "+243", name: "République Démocratique du Congo" },
+    { code: "SN", dialCode: "+221", name: "Sénégal" },
+    { code: "CH", dialCode: "+41", name: "Suisse" },
+    { code: "TZ", dialCode: "+255", name: "Tanzanie" },
+    { code: "TG", dialCode: "+228", name: "Togo" },
     { code: "US", dialCode: "+1", name: "USA" },
-    { code: "CH", dialCode: "+41", name: "Suisse" }
   ];  
 
 const PhoneInput = () => {
@@ -73,7 +70,7 @@ const PhoneInput = () => {
             const value = e.target.value.replace(/^0+/, ""); // Supprime le zéro initial
             if (/^\d{0,9}$/.test(value)) setPhone(value); // Limite à 9 chiffres
           }}
-          placeholder="Numéro"
+          placeholder="Numéro de téléphone"
           className="bg-transparent flex-1 focus:outline-none text-white/80 pl-2"
           maxLength="9"
           required
