@@ -18,7 +18,7 @@ const SelectTrigger = React.forwardRef(({ className, children, ...props }, ref) 
     ref={ref}
     className={cn(
       `flex h-[45px] w-full items-center justify-between rounded-md border 
-      border-white/20 bg-primary text-sm text-white/70 py-3 px-5 
+      border-white/20 bg-primary text-sm text-gray-400 py-3 px-5 
       focus:border-accent outline-none `,
       className
     )}
@@ -59,7 +59,7 @@ const SelectContent = React.forwardRef(({ className, children, position = "poppe
       ref={ref}
       className={cn(
         `relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md 
-        border border-white/10 bg-primary text-white/80 shadow-md 
+        border border-white/10 bg-primary text-gray-400 shadow-md 
         data-[state=open]:animate-in data-[state=closed]:animate-out 
         data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 
         data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 

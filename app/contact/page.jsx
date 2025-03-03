@@ -7,6 +7,8 @@ import emailjs from 'emailjs-com';
 import { Button } from "@/components/ui/ui/button";
 import { Input } from "@/components/ui/ui/input";
 import { Textarea } from "@/components/ui/ui/textarea";
+import PhoneInput from "@/components/ui/PhoneInput"; // Importation du composant
+
 // importation des éléments d'interaction 
 import { 
   Select, 
@@ -54,7 +56,6 @@ import { motion } from "framer-motion";
 import Iconlink from "@/components/ui/Iconlink";
 
 const Contact = () => {
-
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState ("");
   const [email, setEmail] = useState("");
@@ -64,6 +65,8 @@ const Contact = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // État pour contrôler l'affichage du popup
+  const [selectedCode, setSelectedCode] = useState({ code: "CD", dialCode: "+243", name: "RDC" });
+
 
   // Envoyer un message
   const sendMessage = async (e) => {
@@ -255,14 +258,22 @@ const Contact = () => {
                     className="text-white/90"
                     required
                   />
-                  <Input
+                  {/* <Input
                     value={phone} 
                     onChange={(e) => setPhone(e.target.value)}
                     type='tel' name="phone"
                     placeholder='Téléphone *'
                     className="text-white/90"
                     required
+                  /> */}
+                  <PhoneInput 
+                    phone={phone} 
+                    setPhone={setPhone} 
+                    selectedCode={selectedCode} 
+                    setSelectedCode={setSelectedCode} 
+                    className="bg-primary"
                   />
+
                 </div>
                 
                 {/* selection service */}
