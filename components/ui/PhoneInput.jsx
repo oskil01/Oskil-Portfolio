@@ -68,7 +68,9 @@ const PhoneInput = () => {
           name="phone"
           onChange={(e) => {
             const value = e.target.value.replace(/^0+/, ""); // Supprime le zéro initial
-            if (/^\d{0,9}$/.test(value)) setPhone(value); // Limite à 9 chiffres
+            if (/^\d{0,9}$/.test(value)) {
+              setPhone(value); // Stocker uniquement les chiffres (sans indicatif)
+            } 
           }}
           placeholder="Numéro de téléphone"
           className="bg-transparent flex-1 focus:outline-none text-white/80 pl-2"

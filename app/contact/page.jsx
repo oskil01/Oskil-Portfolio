@@ -67,12 +67,11 @@ const Contact = () => {
   const [showPopup, setShowPopup] = useState(false); // État pour contrôler l'affichage du popup
   const [selectedCode, setSelectedCode] = useState({ code: "CD", dialCode: "+243", name: "RDC" });
 
-
   // Envoyer un message
   const sendMessage = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Active le loader
-
+    
   const formData = {
     recipientEmail: "oskill@outlook.fr", // Remplace par une variable si nécessaire
     subject: "Bienvenue sur mon site !",
@@ -88,10 +87,21 @@ const Contact = () => {
     return;
   }
 
+  const validatePhone = (fullPhone) => {
+    // Récupère l'indicatif (ex: "+243") à partir de selectedCode
+    const dialCode = selectedCode.dialCode;
+    // Extrait la partie locale (après l'indicatif)
+    const localNumber = fullPhone.slice(dialCode.length);
+    // Vérifie que la partie locale comporte exactement 9 chiffres et
+    // que l'ensemble commence par un "+"
+    return localNumber.length === 9 && /^\+\d+$/.test(fullPhone);
+  };
+  
   // validation du numéro de téléphone
-  const validatePhone = (phone) => /^\+?[0-9]{8,15}$/.test(phone);
-    if (!validatePhone(phone)) {
-      alert("Numéro de téléphone invalide !");
+  const fullPhone = selectedCode.dialCode + phone.replace(/\s/g, "");
+
+  if (!validatePhone(fullPhone)) {
+    ("Numéro de téléphone invalide !");
     return;
   }
 
@@ -271,7 +281,6 @@ const Contact = () => {
                     setPhone={setPhone} 
                     selectedCode={selectedCode} 
                     setSelectedCode={setSelectedCode} 
-                    className="bg-primary"
                   />
 
                 </div>
@@ -280,8 +289,7 @@ const Contact = () => {
                 <Select  onValueChange={(value) => setService(value)}>
                   <SelectTrigger className="w-full rounded-full bg-primary">
                     <SelectValue 
-                      placeholder="Sélectionez un service (Facultatif)" 
-                      className="text-accent [data-placeholder]:text-white/15"
+                      placeholder="Sélectionez un service (optionnel)" 
                     />
                   </SelectTrigger>
                   <SelectContent>
