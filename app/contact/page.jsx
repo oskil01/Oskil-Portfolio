@@ -65,18 +65,29 @@ const Contact = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false); // État pour contrôler l'affichage du popup
-  const [selectedCode, setSelectedCode] = useState({ code: "CD", dialCode: "+243", name: "RDC" });
+  const [selectedCode, setSelectedCode] = useState({ 
+    code: "CD", 
+    dialCode: "+243", 
+    name: "République Démocratique du Congo" 
+  });
 
   // Envoyer un message
   const sendMessage = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Active le loader
-    
-  const formData = {
-    recipientEmail: "oskill@outlook.fr", // Remplace par une variable si nécessaire
-    subject: "Bienvenue sur mon site !",
-    message: "Merci de nous avoir contactés. Nous reviendrons vers vous bientôt.",
-  };
+  
+    const formData = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      phone : event.target.phone.value,
+      message: event.target.message.value,
+    };
+
+  // const formData = {
+  //   recipientEmail: "oskill@outlook.fr", // Remplace par une variable si nécessaire
+  //   subject: "Bienvenue sur mon site !",
+  //   message: "Merci de nous avoir contactés. Nous reviendrons vers vous bientôt.",
+  // };
 
   // validation email
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
@@ -87,23 +98,24 @@ const Contact = () => {
     return;
   }
 
-  const validatePhone = (fullPhone) => {
-    // Récupère l'indicatif (ex: "+243") à partir de selectedCode
-    const dialCode = selectedCode.dialCode;
-    // Extrait la partie locale (après l'indicatif)
-    const localNumber = fullPhone.slice(dialCode.length);
-    // Vérifie que la partie locale comporte exactement 9 chiffres et
-    // que l'ensemble commence par un "+"
-    return localNumber.length === 9 && /^\+\d+$/.test(fullPhone);
-  };
+  // const validatePhone = (fullPhone) => {
+  //   // Récupère l'indicatif (ex: "+243") à partir de selectedCode
+  //   const dialCode = selectedCode.dialCode;
+  //   // Extrait la partie locale (après l'indicatif)
+  //   const localNumber = fullPhone.slice(dialCode.length);
+  //   // Vérifie que la partie locale comporte exactement 9 chiffres et
+  //   // que l'ensemble commence par un "+"
+  //   return localNumber.length === 9 && /^\+\d+$/.test(fullPhone);
+  // };
   
-  // validation du numéro de téléphone
-  const fullPhone = selectedCode.dialCode + phone.replace(/\s/g, "");
-
-  if (!validatePhone(fullPhone)) {
-    ("Numéro de téléphone invalide !");
-    return;
-  }
+  // // validation du numéro de téléphone
+  // const fullPhone = selectedCode.dialCode + phone.replace(/\s/g, "");
+  // console.log("Numéro de téléphone validé ?", validatePhone(fullPhone));
+  // if (!validatePhone(fullPhone)) {
+  //   ("Numéro de téléphone invalide !");
+  //   setIsLoading(false);
+  //   return;
+  // }
 
   // empeche l'envoie de message vide 
   if (!message.trim()) {
@@ -111,23 +123,27 @@ const Contact = () => {
     setIsLoading(false);
     return;
   }
-    
+  let responseData = null;
     try {
       // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/messages`);
+      console.log("Envoi du message en cours...");
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/messages`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({name, lastname, email, phone, service, message}),
+        body: JSON.stringify(formData),
+        // body: JSON.stringify({name, lastname, email, phone, service, message}),
       });
 
+      const data = await response.json();
+      console.log("Réponse du serveur :", data);
+
+      if (!response.ok) {
+        throw new Error(data.message || "Une erreur s'est produite");
+      }
+      
       console.log("Statut de la réponse :", response.status);
 
-      // Simulation d'un appel API (remplacez avec votre logique d'envoi réel)
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-  
-      console.log("Réponse complète :", response);
-  
-      const responseData = await response.json();
+      // const responseData = await response.json();
 
       // Envoi via EmailJS
       const result = await emailjs.sendForm(
@@ -136,30 +152,45 @@ const Contact = () => {
         e.target,
         'nBFc4iiaAvMxAqmQ0'
       );
-  
+      // try {
+      //   const result = await emailjs.sendForm(
+      //     'oskil_mailling',
+      //     'oskil_mailling_template',
+      //     e.target,
+      //     'nBFc4iiaAvMxAqmQ0'
+      //   );
+      //   console.log("Email envoyé avec succès :", result);
+      // } catch (emailError) {
+      //   console.error("Erreur lors de l'envoi de l'email :", emailError);
+      // }      
+      
+      console.log("Envoi du message...");
       if (response.ok) {
         // Envoi réussi, on affiche le popup
         setShowPopup(true);
+        e.target.reset();
         // Réinitialiser le formulaire
         setName("");
         setLastname("");
         setEmail("");
         setPhone("");
+        setSelectedCode({ code: "CD", dialCode: "+243", name: "RDC" }); // Réinitialise le code du pays
         setService("");
         setMessage("");
         fetchMessages();
       } else {
         console.error("Erreur lors de l'envoi :", responseData);
-        alert("Erreur lors de l'envoi du message : " + (responseData.message || "Erreur inconnue"));
+        alert("Erreur lors de l'envoi du message : " + (responseData?.message || "Erreur inconnue"));
       } 
       setShowPopup(true);
-    } catch (error) {
-      console.error("Erreur dans sendMessage :", error);
-      alert("Erreur lors de l'envoi (catch)");
-    } finally {
-    setIsLoading(false); // Désactive le loader après réponse
-  }
-  };
+        } catch (error) {
+          console.error("Erreur dans sendMessage :", error.message, error.stack);
+          alert("Erreur lors de l'envoi (catch)");
+        } finally {
+          console.log("Désactivation du loader...");
+          setIsLoading(false); // Désactive le loader après réponse
+      }
+    };
   
     // Récupérer les messages
     const fetchMessages = async () => {
@@ -172,7 +203,6 @@ const Contact = () => {
     useEffect(() => {
          fetchMessages();
      }, []);
-
 
     return (
       <motion.section 
@@ -241,7 +271,7 @@ const Contact = () => {
                 <h3 className="text-4xl text-accent text-extrabold ">Travaillons ensemble</h3>
                 <p className="text-white/70">
                   Envoyez-moi un message pour toute sorte de préocupation et je 
-                  vous répondrez sans hésiter.
+                  vous répondrai sans hésiter.
                 </p>
                 {/** champs */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">         
@@ -286,7 +316,7 @@ const Contact = () => {
                 </div>
                 
                 {/* selection service */}
-                <Select  onValueChange={(value) => setService(value)}>
+                <Select value={service}  onValueChange={(value) => setService(value)}>
                   <SelectTrigger className="w-full rounded-full bg-primary">
                     <SelectValue 
                       placeholder="Sélectionez un service (optionnel)" 

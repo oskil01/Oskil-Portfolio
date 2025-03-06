@@ -30,11 +30,9 @@ const countryCodes = [
     { code: "US", dialCode: "+1", name: "Etats-Unis" },
   ];  
 
-const PhoneInput = () => {
-  const [selectedCode, setSelectedCode] = useState(countryCodes[0]); // Par défaut : RDC
-  const [phone, setPhone] = useState("");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const PhoneInput = ({ phone, setPhone, selectedCode, setSelectedCode }) => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    
   const handleSelectCode = (country) => {
     setSelectedCode(country);
     setDropdownOpen(false); // Fermer la liste après sélection
@@ -66,12 +64,7 @@ const PhoneInput = () => {
           type="tel"
           value={phone}
           name="phone"
-          onChange={(e) => {
-            const value = e.target.value.replace(/^0+/, ""); // Supprime le zéro initial
-            if (/^\d{0,9}$/.test(value)) {
-              setPhone(value); // Stocker uniquement les chiffres (sans indicatif)
-            } 
-          }}
+          onChange={(e) => setPhone(e.target.value)}
           placeholder="Numéro de téléphone"
           className="bg-transparent flex-1 focus:outline-none text-white/80 pl-2"
           maxLength="9"
