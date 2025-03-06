@@ -268,8 +268,8 @@ const Contact = () => {
                 onSubmit={sendMessage}
                 autoComplete="off"
               >
-                <h3 className="text-4xl text-accent text-extrabold ">Travaillons ensemble</h3>
-                <p className="text-white/70">
+                <h3 className="xl:text-4xl text-3xl text-accent text-extrabold ">Travaillons ensemble</h3>
+                <p className="text-white/70 text-sm xl:text-base">
                   Envoyez-moi un message pour toute sorte de préocupation et je 
                   vous répondrai sans hésiter.
                 </p>
