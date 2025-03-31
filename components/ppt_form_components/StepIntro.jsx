@@ -110,7 +110,10 @@ export default function StepIntro() {
                  p-1 rounded-xl shadow-2xl"
                 > 
                   <video controls autoPlay className="w-full rounded-xl shadow-2xl">
-                    <source src="/assests/offers/formations/Rihanna_-_Lift_Me_Up__From_Black_Panther__Wakanda_Forever_(720p).mp4" type="video/mp4" />
+                    <source 
+                      src="/assests/offers/formations/medias/Vidéo_de_présentation_de_la_formation_en_PowerPoint_session_Avril8+_2025_by_oskil.mp4" 
+                      type="video/mp4" 
+                    />
                     Votre navigateur ne supporte pas la lecture de vidéos.
                   </video>
                 </div>
@@ -124,26 +127,17 @@ export default function StepIntro() {
         <div className="bg-[#1e1e1e] p-6 rounded-xl">
         <h2 className="text-accent font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl">
             FORMATION EN MICROSOFT POWERPOINT - 
-            <span className="text-white/90"> SESSION MARS 2025</span>
+            <span className="text-white/90"> SESSION MAI 2025</span>
           </h2>
           {/* Détails de la formation */}
           <div className="mt-6 p-4 bg-gray-800 text-white rounded-lg shadow-lg">
             <ul className="space-y-2">
               <li className="flex items-center">
-                <svg className="w-5 h-5 text-blue-400 mr-2" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M12 14v-4m0 0V6m0 4h4m-4 0H8m12-1v8a2 2 0 01-2 
-                    2h-12a2 2 0 01-2-2v-8">
-                  </path>
-                </svg>
+                <img
+                  src="/assests/offers/formations/icons/wifi.svg"
+                  alt="Hand Waving"
+                  className="w-5 h-5 mr-2"
+                />
                 <p className="text-gray-400 text-[12px] xl:text-base">En ligne :</p>
                 <strong 
                   className="ml-2 text-lg text-white/90">15$
@@ -151,35 +145,21 @@ export default function StepIntro() {
               </li>
 
               <li className="flex items-center">
-                <svg 
-                  className="w-5 h-5 text-green-400 mr-2" 
-                  fill="none" stroke="currentColor" 
-                  strokeWidth="2" viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M3 9l9-6 9 6v6a9 9 0 11-18 0V9z">
-                  </path>
-                </svg>
-                <p className="text-gray-400 text-[12px] xl:text-base">Présentiel :</p>
-                <strong className="ml-2 text-lg text-white/90">25$</strong>
+                  <img
+                    src="/assests/offers/formations/icons/home.svg"
+                    alt="Hand Waving"
+                    className="w-5 h-5 mr-2"
+                  />
+                  <p className="text-gray-400 text-[12px] xl:text-base">Présentiel :</p>
+                  <strong className="ml-2 text-lg text-white/90">25$</strong>
               </li>
 
               <li className="flex items-center">
-                <svg 
-                  className="w-5 h-5 text-purple-400 mr-2" 
-                  fill="none" stroke="currentColor" 
-                  strokeWidth="2" 
-                  viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M12 8c1.333 0 4 1.333 4 4s-2.667 4-4 4-4-1.333-4-4 
-                    2.667-4 4-4z">
-                  </path>
-                </svg>
+                <img
+                  src="/assests/offers/formations/icons/time.svg"
+                  alt="Hand Waving"
+                  className="w-5 h-5 mr-2"
+                />
                 <p className="text-gray-400 text-[12px] xl:text-base">Durée :</p>
                   <span className="ml-2 font-extrabold text-white/90">
                     14 jours
@@ -187,23 +167,14 @@ export default function StepIntro() {
               </li>
 
               <li className="flex items-center">
-                <svg 
-                  className="w-5 h-5 text-red-400 mr-2" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M8 7V3m8 4V3m-8 4h8m-9 10h10a2 2 0 002-2V9a2 2 0 
-                    00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                  </path>
-                </svg>
-                <span className="ml-2 font-extrabold text-white/90 
-                text-[14px] xl:text-base">
-                10-24 Avr. 2025
+                <img
+                  src="/assests/offers/formations/icons/calendar.svg"
+                  alt="Hand Waving"
+                  className="w-5 h-5 mr-2 text-green-400"
+                />
+                <span className="text-gray-400 text-[14px] xl:text-base ">
+                  Du <strong className="text-white/90"> 05 Avr. </strong> 
+                  au <strong className="text-white/90"> 18 Mai 2025 </strong> 
                 </span>
               </li>
             </ul>

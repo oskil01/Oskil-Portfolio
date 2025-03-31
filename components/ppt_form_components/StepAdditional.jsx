@@ -23,10 +23,14 @@ export default function StepAditional() {
               {/* Section Explication */}
               <div className="p-8 bg-gradient-to-b from-orange-700 
                 via-orange-600 to-accent flex-1 relative rounded-xl">
-                <h3 className="text-black font-bold text-xl xl:text-2xl">Vous y êtes presque !</h3>
+                <h3 className="text-black font-bold text-xl xl:text-2xl
+                text-center xl:text-left"
+                >
+                  Vous y êtes presque !
+                </h3>
                 {/* Main animée centrée sous la description */}
                 <motion.div
-                  className="mt-4 w-30 h-30"
+                  className="mt-4 w-30 h-30 flex justify-center xl:justify-start"
                   animate={{ rotate: [1, 1.7, 1] }}
                   transition={{ 
                     repeat: Infinity, 
@@ -41,7 +45,7 @@ export default function StepAditional() {
                  />
                 </motion.div>
                 
-                <p className="text-black text-sm mt-4 text-justify">
+                <p className="text-black text-sm mt-4 xl:text-justify text-center">
                   Dites-nous par quel canal vous avez entendu parler de nous.
                   Ces informations nous aideront à booster davantage nos canaux
                   de communication afin d'atteindre plus de personnes prochainement.
@@ -50,7 +54,9 @@ export default function StepAditional() {
       
               {/* Section Formulaire */}
               <div className="p-6 flex-1">
-                <h2 className="text-white text-2xl font-bold mb-6">
+                <h2 className="text-white text-2xl font-bold mb-6 text-center 
+                  xl:text-left"
+                >
                   Informations Supplémentaires
                 </h2>
                 <form className="space-y-4">

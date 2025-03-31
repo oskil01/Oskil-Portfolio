@@ -10,11 +10,13 @@ export default function StepSubmit() {
       {/* Section Explication */}
       <div className="p-8 bg-gradient-to-b from-orange-700 
         via-orange-600 to-accent flex-1 relative rounded-xl">
-        <h3 className="text-black font-bold text-xl xl:text-2xl">
+        <h3 className="text-black font-bold text-xl xl:text-2xl text-center
+          xl:text-left"
+        >
           C'est la fin !
         </h3>
         <motion.div
-          className="mt-4 w-30 h-30"
+          className="mt-4 w-30 h-30 flex justify-center xl:justify-start"
           animate={{ rotate: [1, 1.7, 1] }}
           transition={{ 
             repeat: Infinity, 
@@ -29,7 +31,7 @@ export default function StepSubmit() {
             />
         </motion.div>
         
-        <p className="text-black text-sm mt-4 text-justify">
+        <p className="text-black text-sm mt-4 xl:text-justify text-center">
           Avant de soumettre le formulaire, nous vous demandons de bien vouloir
           vérifiez si vos informations ne sont pas erronnées. Si tout est Ok, cliquez 
           sur <strong>"Soumettre"</strong> pour terminer. 
@@ -38,13 +40,13 @@ export default function StepSubmit() {
 
       {/* Section Formulaire */}
       <div className="p-6 flex-1">
-        <h2 className="text-white text-2xl font-bold mb-6">
+        <h2 className="text-white text-2xl font-bold mb-6 text-center xl:text-left">
           Optionnel
         </h2>
         <form className="space-y-4">
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm text-center xl:text-left">
             Avez-vous une question ou une préoccupation ? 
-            Merci de nous en Formulaire part et nous vous répondrons.
+            Merci de nous en faire part et nous vous répondrons.
           </p>
           <Textarea
             type="text"

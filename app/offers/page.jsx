@@ -55,10 +55,10 @@ export default function OffresPage() {
         initial={{ opacity: 0, y: -20 }} 
         animate={{ opacity: 1, y: 0 }}
       >
-        Nos Offres
+        Mes Offres
       </motion.h1>
       <p className="text-center text-gray-500 mb-6">
-        Découvrez nos formations, services et promotions.
+      Découvrez des offres de formations, services et promotions essentiels pour vous !
       </p>
 
       {/* Filtres */}
